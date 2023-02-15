@@ -1,0 +1,9 @@
+{
+  "title": "CreateUserResponseBody",
+  "type": "interface",
+  "properties": {
+    "email": "string",
+    "password": "string"
+  },
+  "required": []
+}
