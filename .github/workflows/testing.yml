@@ -1,5 +1,6 @@
-name: Jest Tests
-run-name: Run Jest Tests
+name: TestsAndLint
+
+
 on: [pull_request:
        branches: [main]
 ]
