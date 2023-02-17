@@ -9,10 +9,9 @@
 		"dev": "ts-node-dev --respawn src/index.ts",
 		"start": "node --async-stack-traces dist/index.js",
 		"test": "SET NODE_ENV=test&&mocha --recursive dist/specs --exit --async-stack-traces",
-		"deliver": "git archive --format=zip --output=deliver.zip HEAD",
 		"compile-schemas": "json2ts -i src/schemas/json -o src/schemas/types"
 	},
-	"author": "Vincent Petit & Duc-Thomas Nguyen",
+	"author": "Alexandre Piedvache Timothé Prevot",
 	"license": "ISC",
 	"devDependencies": {
 		"@faker-js/faker": "^7.6.0",

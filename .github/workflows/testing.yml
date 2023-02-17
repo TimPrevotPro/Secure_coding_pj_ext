@@ -12,5 +12,5 @@ jobs:
         with:
           node-version: '19'
       - run: npm install
-      - run: npm test
       - run: npm lint
+      - run: npm test
