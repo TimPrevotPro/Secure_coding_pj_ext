@@ -4,6 +4,13 @@
 
 Please note that the scripts in this project are written for Unix CLI and not windows. If you are using windows, please use WSL2 and install Node.js on your sub-system.
 
+We used git Flow to manage our work with features on branch develop.
+
+`
+  start a feature : git flow feature start nameOfTheFeature
+  finish a feature : git flow feature finish
+`
+
 ### Delivery
 
 To create a delivery archive, type `npm run deliver`.
