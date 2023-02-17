@@ -1,9 +1,9 @@
 name: Jest Tests
 run-name: Run Jest Tests
 on: [pull_request:
-  branches:
-    - main
+       branches: [main]
 ]
+
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
