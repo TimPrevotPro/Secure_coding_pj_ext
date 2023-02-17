@@ -1,9 +1,9 @@
 name: TestsAndLint
 
-
-on: [pull_request:
-       branches: [main]
-]
+on:
+  pull_request:
+    branches:
+      - main
 
 jobs:
   check-bats-version:
