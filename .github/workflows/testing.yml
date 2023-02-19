@@ -11,6 +11,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
+      - run: pwd
       - run: npm install
       - run: tsc -p tsconfig.json
+      - run: npm run lint
       - run: npm run testLinux
+      - run: npm run coverage
