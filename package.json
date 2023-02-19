@@ -8,8 +8,9 @@
 		"lint": "eslint --fix src",
 		"dev": "ts-node-dev --respawn src/index.ts",
 		"start": "node --async-stack-traces dist/index.js",
-		"test": "SET NODE_ENV=test&&mocha --recursive dist/specs --exit --async-stack-traces",
-		"compile-schemas": "json2ts -i src/schemas/json -o src/schemas/types"
+		"testWindows": " SET NODE_ENV=test&&mocha mocha --require ts-node/register --recursive ./src/specs/**/*.spec.ts --exit --async-stack-traces",
+		"testLinux": " env NODE_ENV=test&&mocha mocha --require ts-node/register --recursive ./src/specs/**/*.spec.ts --exit --async-stack-traces",
+		"coverage": "nyc --reporter=html --reporter=text mocha dist/specs --timeout 15000 --exit"
 	},
 	"author": "Alexandre Piedvache Timothé Prevot",
 	"license": "ISC",
@@ -26,6 +27,7 @@
 		"chai-as-promised": "^7.1.1",
 		"eslint": "^8.2.0",
 		"mocha": "^10.1.0",
+		"nyc": "^15.1.0",
 		"ts-node": "^10.9.1",
 		"ts-node-dev": "^2.0.0",
 		"typescript": "^4.3.2"

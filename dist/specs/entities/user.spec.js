@@ -28,7 +28,7 @@ describe("User", function () {
             await repo.save(user);
             chai.expect(user).to.haveOwnProperty("id").and.be.a.ok("number");
         });
-        //TODO: fix this test: AssertionError: expected [ ValidationError{ …(5) } ] to deep include { target: User{ …(3) }, …(4) }
+        //TODO: fix this specs: AssertionError: expected [ ValidationError{ …(5) } ] to deep include { target: User{ …(3) }, …(4) }
         it("should raise error if email is missing", async function () {
             const repo = typeorm_1.AppDataSource.manager.getRepository(user_1.User);
             const user = repo.create({
@@ -36,7 +36,7 @@ describe("User", function () {
                 lastName: faker_1.faker.name.lastName(),
                 passwordHash: faker_1.faker.internet.password(),
             });
-            // I have to write the whole object to make the test pass, the deep.include is not working properly
+            // I have to write the whole object to make the specs pass, the deep.include is not working properly
             await chai.expect(repo.save(user)).to.eventually.be.rejected.and.deep.include({
                 target: user,
                 value: undefined,
@@ -45,7 +45,7 @@ describe("User", function () {
                 constraints: { isNotEmpty: "email should not be empty" },
             });
         });
-        //TODO fix this test: AssertionError: expected promise to be rejected with 'QueryFailedError' but it was fulfilled with QueryFailedError: duplicate key value vio… { …(18) }
+        //TODO fix this specs: AssertionError: expected promise to be rejected with 'QueryFailedError' but it was fulfilled with QueryFailedError: duplicate key value vio… { …(18) }
         it("Should validate uniqueness of email ignoring case at db level", async function () {
             const repo = typeorm_1.AppDataSource.manager.getRepository(user_1.User);
             const user1 = repo.create({
@@ -95,4 +95,4 @@ describe("User", function () {
         });
     });
 });
-//# sourceMappingURL=user.spec.js.map
+//# sourceMappingURL=user.spec.ts.map

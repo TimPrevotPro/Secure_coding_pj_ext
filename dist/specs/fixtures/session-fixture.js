@@ -5,4 +5,4 @@ const sessionFixture = function () {
     const session = buildSessionFixture();
 };
 exports.sessionFixture = sessionFixture;
-//# sourceMappingURL=session-fixture.js.map
+//# sourceMappingURL=session-fixture.ts.map

@@ -1,4 +1,4 @@
-name: TestsAndLint
+name: Tests
 
 on:
   push
@@ -12,4 +12,4 @@ jobs:
         with:
           node-version: '19'
       - run: npm install
-      - run: npm run test
+      - run: npm run testLinux

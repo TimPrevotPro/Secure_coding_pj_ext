@@ -1,4 +1,4 @@
-name: TestsAndLint
+name: Lint
 
 on:
   push
