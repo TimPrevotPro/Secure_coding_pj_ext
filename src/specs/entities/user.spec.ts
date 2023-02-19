@@ -3,7 +3,7 @@ import * as chai from "chai";
 import * as chaiAsPromised from "chai-as-promised";
 import { faker } from "@faker-js/faker";
 import { AppDataSource } from "../../lib/typeorm";
-import { User } from "../../entities/user";
+import { User } from "../../entities/User";
 import { QueryFailedError } from "typeorm/error/QueryFailedError";
 import { ValidationError } from "../../ValidationError";
 

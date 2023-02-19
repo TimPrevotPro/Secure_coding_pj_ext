@@ -1,6 +1,6 @@
 import { registerDecorator, ValidationOptions, ValidationArguments } from "class-validator";
 import { ILike } from "typeorm";
-import { User } from "../entities/user";
+import { User } from "../entities/User";
 import { AppDataSource } from "../lib/typeorm";
 
 interface UniqueInColumnProps {
