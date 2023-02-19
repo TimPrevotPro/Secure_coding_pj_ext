@@ -12,5 +12,5 @@ jobs:
         with:
           node-version: '19'
       - run: npm install
-      - run: npm run build
+      - run: npm run compile-schemas  && tsc -p tsconfig.json
       - run: npm run testLinux
