@@ -95,4 +95,4 @@ describe("User", function () {
         });
     });
 });
-//# sourceMappingURL=user.spec.ts.map
+//# sourceMappingURL=user.spec.js.map

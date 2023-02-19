@@ -5,11 +5,11 @@
 	"main": "dist/index.js",
 	"scripts": {
 		"build": "rmdir /s /q dist && npm run compile-schemas  && tsc -p tsconfig.json",
-		"lint": "eslint --fix src",
+		"lint": "eslint src",
 		"dev": "ts-node-dev --respawn src/index.ts",
 		"start": "node --async-stack-traces dist/index.js",
 		"testWindows": " SET NODE_ENV=test&&mocha mocha --require ts-node/register --recursive ./src/specs/**/*.spec.ts --exit --async-stack-traces",
-		"testLinux": "mocha --require ts-node/register --recursive ./src/specs/**/*.spec.ts --exit --async-stack-traces",
+		"testLinux": " env NODE_ENV=test&&mocha mocha --require ts-node/register --recursive ./src/specs/**/*.spec.ts --exit --async-stack-traces",
 		"coverage": "nyc --reporter=html --reporter=text mocha dist/specs --timeout 15000 --exit"
 	},
 	"author": "Alexandre Piedvache Timothé Prevot",

@@ -12,4 +12,5 @@ jobs:
         with:
           node-version: '19'
       - run: npm install
+      - run: tsc
       - run: npm run testLinux

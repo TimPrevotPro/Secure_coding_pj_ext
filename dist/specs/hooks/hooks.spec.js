@@ -38,4 +38,4 @@ describe("hooks", function () {
         });
     });
 });
-//# sourceMappingURL=hooks.spec.ts.map
+//# sourceMappingURL=hooks.spec.js.map
