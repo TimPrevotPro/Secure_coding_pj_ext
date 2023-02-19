@@ -2,7 +2,7 @@
 	"name": "node-ts-template",
 	"version": "1.0.0",
 	"description": "Basic template of a node + typescript project",
-	"main": "dist/index.js",
+	"main": "src/index.ts",
 	"scripts": {
 		"build": "rmdir /s /q dist && npm run compile-schemas  && tsc -p tsconfig.json",
 		"lint": "eslint --fix src",

@@ -3,8 +3,9 @@ FROM node:lts
 RUN mkdir /app
 WORKDIR /app
 
-COPY package.json /app
-COPY .env /app
+COPY . /app
 
 RUN node -v
 RUN npm install
+
+EXPOSE 8080
