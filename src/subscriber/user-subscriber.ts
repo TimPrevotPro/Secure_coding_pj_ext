@@ -1,5 +1,6 @@
 import { EntitySubscriberInterface, EventSubscriber, InsertEvent, UpdateEvent } from "typeorm";
 import { User, validateUser } from "../entities/user";
+import { logger } from "../utils/logger";
 
 @EventSubscriber()
 export class UserSubscriber implements EntitySubscriberInterface<User> {
@@ -8,13 +9,13 @@ export class UserSubscriber implements EntitySubscriberInterface<User> {
 	}
 
 	async beforeInsert(event: InsertEvent<User>) {
-		console.log("BEFORE USER INSERTED: ", event.entity);
+		logger.info("BEFORE USER INSERTED: ", event.entity);
 		await validateUser(event.entity);
 	}
 
 	async beforeUpdate(event: UpdateEvent<User>) {
 		if (!event.entity) throw new Error("No entity found");
-		console.log("BEFORE USER UPDATED: ", event.databaseEntity);
+		logger.info("BEFORE USER UPDATED: ", event.databaseEntity);
 		await validateUser(event.databaseEntity);
 	}
 }

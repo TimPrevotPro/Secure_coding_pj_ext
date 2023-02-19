@@ -1,9 +1,10 @@
 import { FastifyRequest, FastifyReply } from "fastify";
 import { ValidationError } from "class-validator";
 import { EntityNotFoundError } from "typeorm";
+import { logger } from "../utils/logger";
 
 export async function errorHandler(error: Error, request: FastifyRequest, reply: FastifyReply) {
-	console.error(error);
+	logger.error(error);
 
 	if (error instanceof ValidationError) {
 		await reply.status(400).send({ error: "Validation Error" });
