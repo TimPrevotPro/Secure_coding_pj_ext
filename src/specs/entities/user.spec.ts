@@ -32,7 +32,6 @@ describe("User", function () {
 			chai.expect(user).to.haveOwnProperty("id").and.be.a.ok("number");
 		});
 
-		//TODO: fix this test: AssertionError: expected [ ValidationError{ …(5) } ] to deep include { target: User{ …(3) }, …(4) }
 		it("should raise error if email is missing", async function () {
 			const repo = AppDataSource.manager.getRepository(User);
 			const user = repo.create({
@@ -41,13 +40,12 @@ describe("User", function () {
 				passwordHash: faker.internet.password(),
 			});
 
-			// I have to write the whole object to make the test pass, the deep.include is not working properly
 			await chai.expect(repo.save(user)).to.eventually.be.rejected.and.deep.include({
 				target: user,
 				value: undefined,
 				property: "email",
 				children: [],
-				constraints: { isNotEmpty: "email should not be empty" },
+				constraints: { isEmail: 'email must be an email', isNotEmpty: "email should not be empty" },
 			});
 		});
 
