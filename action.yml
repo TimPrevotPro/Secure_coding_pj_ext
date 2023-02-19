@@ -1,0 +1,7 @@
+name: 'Your name here'
+description: 'Provide a description here'
+author: 'Timothé Prevot & Alexandre Piedvache'
+
+runs:
+  using: 'node18'
+  main: 'dist/index.js'
