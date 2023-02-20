@@ -6,10 +6,9 @@
 	"scripts": {
 		"build": "rmdir /s /q dist && npm run compile-schemas  && tsc -p tsconfig.json",
 		"dev": "ts-node-dev --respawn src/index.ts",
-		"start": "node --async-stack-traces dist/index.js",
 		"testWindows": " SET NODE_ENV=test&&mocha mocha --require ts-node/register --recursive ./src/specs/**/*.spec.ts --exit --async-stack-traces",
 		"testLinux": " env NODE_ENV=test&&mocha mocha --require ts-node/register --recursive ./src/specs/**/*.spec.ts --exit --async-stack-traces",
-		"coverage": "nyc --reporter=text mocha dist/specs --timeout 15000 --exit"
+		"coverage": "nyc --reporter=text mocha dist/specs --timeout 15000 --exit",
 		"lint": "eslint --fix src",
 		"start": "nodemon",
 		"compile-schemas": "json2ts -i src/schemas/json -o src/schemas/types"
