@@ -14,5 +14,6 @@ jobs:
       - run: pwd && ls
       - run: npm install
       - run: tsc -p tsconfig.json
+      - run: docker compose up
       - run: npm run testLinux
       - run: npm run coverage
