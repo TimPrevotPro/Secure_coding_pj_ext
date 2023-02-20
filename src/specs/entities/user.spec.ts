@@ -3,7 +3,7 @@ import * as chai from "chai";
 import * as chaiAsPromised from "chai-as-promised";
 import { faker } from "@faker-js/faker";
 import { AppDataSource } from "../../lib/typeorm";
-import { User } from "../../entities/user";
+import { User } from "../../entities/User";
 import { QueryFailedError } from "typeorm/error/QueryFailedError";
 import { ValidationError } from "../../ValidationError";
 
@@ -32,7 +32,6 @@ describe("User", function () {
 			chai.expect(user).to.haveOwnProperty("id").and.be.a.ok("number");
 		});
 
-		//TODO: fix this test: AssertionError: expected [ ValidationError{ …(5) } ] to deep include { target: User{ …(3) }, …(4) }
 		it("should raise error if email is missing", async function () {
 			const repo = AppDataSource.manager.getRepository(User);
 			const user = repo.create({
@@ -41,17 +40,15 @@ describe("User", function () {
 				passwordHash: faker.internet.password(),
 			});
 
-			// I have to write the whole object to make the test pass, the deep.include is not working properly
 			await chai.expect(repo.save(user)).to.eventually.be.rejected.and.deep.include({
 				target: user,
 				value: undefined,
 				property: "email",
 				children: [],
-				constraints: { isNotEmpty: "email should not be empty" },
+				constraints: { isEmail: 'email must be an email', isNotEmpty: "email should not be empty" },
 			});
 		});
 
-		//TODO fix this test: AssertionError: expected promise to be rejected with 'QueryFailedError' but it was fulfilled with QueryFailedError: duplicate key value vio… { …(18) }
 		it("Should validate uniqueness of email ignoring case at db level", async function () {
 			const repo = AppDataSource.manager.getRepository(User);
 			const user1 = repo.create({
@@ -72,7 +69,7 @@ describe("User", function () {
 
 			await chai
 				.expect(repo.save(user2))
-				.to.eventually.be.rejected.and.rejectedWith(
+				.to.be.rejected.and.deep.include(
 					QueryFailedError,
 					'duplicate key value violates unique constraint on "user_email" '
 				);

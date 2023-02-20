@@ -1,7 +1,9 @@
 import { Entity, PrimaryGeneratedColumn, Column, Index, BaseEntity } from "typeorm";
 import { IsEmail, IsNotEmpty, IsString, validate } from "class-validator";
 import { ValidationError } from "../ValidationError";
-import * as bcrypt from "bcrypt";
+// eslint-disable-next-line @typescript-eslint/no-var-requires,@typescript-eslint/no-unsafe-assignment
+const bcrypt = require('bcrypt');
+import { logger } from "../utils/logger";
 
 @Entity()
 export class User extends BaseEntity {
@@ -27,7 +29,7 @@ export class User extends BaseEntity {
 			},
 		},
 	})
-	@Index({ unique: true })
+	@Column({ unique: true })
 	@IsNotEmpty({ message: "email should not be empty" })
 	@IsEmail()
 	email: string;
@@ -46,6 +48,7 @@ export class User extends BaseEntity {
 	}
 
 	async isPasswordValid(password: string): Promise<boolean> {
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-return,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
 		return await bcrypt.compare(password, this.passwordHash);
 	}
 
@@ -60,6 +63,7 @@ export class User extends BaseEntity {
 		if (this.calculateEntropy(password) < 80) {
 			throw new ValidationError("password is too weak", this, "passwordHash");
 		}
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access
 		this.passwordHash = await bcrypt.hash(password, 10);
 	}
 }
@@ -67,7 +71,7 @@ export class User extends BaseEntity {
 export async function validateUser(user: User) {
 	const errors = await validate(user);
 	if (errors.length > 0) {
-		console.log("ERRORS: ", errors);
+		logger.error("ERRORS: ", errors);
 		throw errors;
 	}
 }

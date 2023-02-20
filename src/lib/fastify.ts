@@ -5,6 +5,7 @@ import { assertsParamsSchemaPresenceHook } from "../hooks/assertsParamsSchemaPre
 import { assertsQuerySchemaPresenceHook } from "../hooks/assertsQuerySchemaPresenceHook";
 import { assertsResponseSchemaPresenceHook } from "../hooks/assertsResponseSchemaPresenceHook";
 import { errorHandler } from "../handlers/errorHandler";
+import { logger } from "../utils/logger";
 
 export const server = fastify({
 	ajv: {
@@ -24,5 +25,5 @@ async function run() {
 }
 
 run().catch((err) => {
-	console.error(err);
+	logger.error(err);
 });

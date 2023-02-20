@@ -1,4 +1,4 @@
-import { User } from "./entities/user";
+import { User } from "./entities/User";
 
 export class ValidationError extends Error {
 	target: User;
