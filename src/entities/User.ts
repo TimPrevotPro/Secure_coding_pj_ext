@@ -2,6 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, Index, BaseEntity } from "typeo
 import { IsEmail, IsNotEmpty, IsString, validate } from "class-validator";
 import { ValidationError } from "../ValidationError";
 import * as bcrypt from "bcrypt";
+import { logger } from "../utils/logger";
 
 @Entity()
 export class User extends BaseEntity {
@@ -67,7 +68,7 @@ export class User extends BaseEntity {
 export async function validateUser(user: User) {
 	const errors = await validate(user);
 	if (errors.length > 0) {
-		console.log("ERRORS: ", errors);
+		logger.error("ERRORS: ", errors);
 		throw errors;
 	}
 }

@@ -30,6 +30,7 @@
 		"mocha": "^10.1.0",
 		"nyc": "^15.1.0",
 		"nodemon": "^2.0.20",
+		"pino-pretty": "^9.3.0",
 		"ts-node": "^10.9.1",
 		"ts-node-dev": "^2.0.0",
 		"typescript": "^4.3.2"
@@ -42,6 +43,7 @@
 		"fastify": "^4.11.0",
 		"json-schema-to-typescript": "^11.0.2",
 		"pg": "^8.8.0",
+		"pino": "^8.10.0",
 		"reflect-metadata": "^0.1.13",
 		"typeorm": "^0.3.11"
 	}
