@@ -11,10 +11,6 @@ We used git Flow to manage our work with features on branch develop.
   finish a feature : git flow feature finish
 `
 
-### Delivery
-
-To create a delivery archive, type `npm run deliver`.
-
 ## Questions
 
 ### Question 1:
