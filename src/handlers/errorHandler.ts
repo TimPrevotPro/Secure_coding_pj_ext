@@ -5,6 +5,8 @@ import { EntityNotFoundError } from "typeorm";
 export async function errorHandler(error: Error, request: FastifyRequest, reply: FastifyReply) {
 	console.error(error);
 
+	// First case can't trigger because the ValidationError from class-validator doesn't implement the Error interface
+	// I could've made a custom ValidationPipe to handle this if we were using express, but it's not possible on Fastify :)
 	if (error instanceof ValidationError) {
 		await reply.status(400).send({ error: "Validation Error" });
 	} else if (error instanceof EntityNotFoundError) {

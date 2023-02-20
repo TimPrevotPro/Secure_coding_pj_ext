@@ -49,7 +49,6 @@ describe("User", function () {
 			});
 		});
 
-		//TODO fix this test: AssertionError: expected promise to be rejected with 'QueryFailedError' but it was fulfilled with QueryFailedError: duplicate key value vio… { …(18) }
 		it("Should validate uniqueness of email ignoring case at db level", async function () {
 			const repo = AppDataSource.manager.getRepository(User);
 			const user1 = repo.create({
@@ -70,7 +69,7 @@ describe("User", function () {
 
 			await chai
 				.expect(repo.save(user2))
-				.to.eventually.be.rejected.and.rejectedWith(
+				.to.be.rejected.and.deep.include(
 					QueryFailedError,
 					'duplicate key value violates unique constraint on "user_email" '
 				);

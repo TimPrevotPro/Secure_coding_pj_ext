@@ -2,7 +2,8 @@ import { FastifyPluginCallback } from "fastify";
 import { User } from "../../entities/user";
 import { CreateUserRequestBody as ICreateUserRequestBody } from "../../schemas/types/CreateUserRequestBody";
 import { CreateUserResponseBody } from "../../schemas/types/CreateUserResponseBody";
-import * as bcrypt from "bcrypt";
+// eslint-disable-next-line @typescript-eslint/no-var-requires,@typescript-eslint/no-unsafe-assignment
+const bcrypt = require('bcrypt');
 import { AppDataSource } from "../../lib/typeorm";
 
 export const userRoutes: FastifyPluginCallback = (server, options, done) => {
@@ -28,6 +29,7 @@ export const userRoutes: FastifyPluginCallback = (server, options, done) => {
 				firstName: firstName,
 				lastName: lastName,
 				email: email,
+				// eslint-disable-next-line @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-assignment,@typescript-eslint/no-unsafe-member-access
 				passwordHash: await bcrypt.hash(password, 10),
 			});
 			await repo.save(user);
