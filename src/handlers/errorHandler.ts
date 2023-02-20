@@ -1,9 +1,10 @@
 import { FastifyRequest, FastifyReply } from "fastify";
 import { ValidationError } from "class-validator";
 import { EntityNotFoundError } from "typeorm";
+import { logger } from "../utils/logger";
 
 export async function errorHandler(error: Error, request: FastifyRequest, reply: FastifyReply) {
-	console.error(error);
+	logger.error(error);
 
 	// First case can't trigger because the ValidationError from class-validator doesn't implement the Error interface
 	// I could've made a custom ValidationPipe to handle this if we were using express, but it's not possible on Fastify :)

@@ -1,5 +1,5 @@
 import { FastifyPluginCallback } from "fastify";
-import { User } from "../../entities/user";
+import { User } from "../../entities/User";
 import { CreateUserRequestBody as ICreateUserRequestBody } from "../../schemas/types/CreateUserRequestBody";
 import { CreateUserResponseBody } from "../../schemas/types/CreateUserResponseBody";
 // eslint-disable-next-line @typescript-eslint/no-var-requires,@typescript-eslint/no-unsafe-assignment

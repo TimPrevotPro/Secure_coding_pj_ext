@@ -3,6 +3,7 @@ import { IsEmail, IsNotEmpty, IsString, validate } from "class-validator";
 import { ValidationError } from "../ValidationError";
 // eslint-disable-next-line @typescript-eslint/no-var-requires,@typescript-eslint/no-unsafe-assignment
 const bcrypt = require('bcrypt');
+import { logger } from "../utils/logger";
 
 @Entity()
 export class User extends BaseEntity {
@@ -70,7 +71,7 @@ export class User extends BaseEntity {
 export async function validateUser(user: User) {
 	const errors = await validate(user);
 	if (errors.length > 0) {
-		console.log("ERRORS: ", errors);
+		logger.error("ERRORS: ", errors);
 		throw errors;
 	}
 }

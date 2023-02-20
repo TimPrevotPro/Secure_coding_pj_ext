@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 import * as dotenv from "dotenv";
-import { User } from "../entities/user";
+import { User } from "../entities/User";
 import { UserSubscriber } from "../subscriber/user-subscriber";
 
 dotenv.config();
