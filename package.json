@@ -2,17 +2,19 @@
 	"name": "node-ts-template",
 	"version": "1.0.0",
 	"description": "Basic template of a node + typescript project",
-	"main": "dist/index.js",
+	"main": "src/index.ts",
 	"scripts": {
 		"build": "rmdir /s /q dist && npm run compile-schemas  && tsc -p tsconfig.json",
-		"lint": "eslint src",
 		"dev": "ts-node-dev --respawn src/index.ts",
 		"start": "node --async-stack-traces dist/index.js",
 		"testWindows": " SET NODE_ENV=test&&mocha mocha --require ts-node/register --recursive ./src/specs/**/*.spec.ts --exit --async-stack-traces",
 		"testLinux": " env NODE_ENV=test&&mocha mocha --require ts-node/register --recursive ./src/specs/**/*.spec.ts --exit --async-stack-traces",
-		"coverage": "nyc --reporter=html --reporter=text mocha dist/specs --timeout 15000 --exit"
+		"coverage": "nyc --reporter=text mocha dist/specs --timeout 15000 --exit"
+		"lint": "eslint --fix src",
+		"start": "nodemon",
+		"compile-schemas": "json2ts -i src/schemas/json -o src/schemas/types"
 	},
-	"author": "Alexandre Piedvache Timothé Prevot",
+	"author": "Alexandre Piedvache et Timothé Prévôt",
 	"license": "ISC",
 	"devDependencies": {
 		"@faker-js/faker": "^7.6.0",
@@ -28,6 +30,7 @@
 		"eslint": "^8.2.0",
 		"mocha": "^10.1.0",
 		"nyc": "^15.1.0",
+		"nodemon": "^2.0.20",
 		"ts-node": "^10.9.1",
 		"ts-node-dev": "^2.0.0",
 		"typescript": "^4.3.2"
