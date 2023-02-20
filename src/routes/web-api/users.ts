@@ -2,7 +2,7 @@ import { FastifyPluginCallback } from "fastify";
 import { User } from "../../entities/user";
 import { CreateUserRequestBody as ICreateUserRequestBody } from "../../schemas/types/CreateUserRequestBody";
 import { CreateUserResponseBody } from "../../schemas/types/CreateUserResponseBody";
-import * as bcrypt from "bcrypt";
+const bcrypt = require('bcrypt');
 import { AppDataSource } from "../../lib/typeorm";
 
 export const userRoutes: FastifyPluginCallback = (server, options, done) => {
