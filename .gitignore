@@ -5,3 +5,4 @@ docker
 *.zip
 .idea
 /questions-1-2-PREVOT-PIEDVACHE.pdf
+package-lock.json
